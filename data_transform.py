@@ -19,14 +19,14 @@ def process_row(row: list[str]) -> list:
     product, raw_price, quantity, transaction_date, region = row
 
     if product != TARGET_PRODUCT:
-        return None
+        return None # type: ignore
 
     sale = calculate_sale(raw_price, quantity)
 
     return [sale, transaction_date, region]
 
 
-def process_file(file_path: Path, writer: csv.writer) -> None:
+def process_file(file_path: Path, writer: csv.writer) -> None: # type: ignore
     """Read and process a single CSV file."""
     with file_path.open(mode="r", newline="") as input_file:
         reader = csv.reader(input_file)
